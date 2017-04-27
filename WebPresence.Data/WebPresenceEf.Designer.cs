@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿// T4 code generation is enabled for model 'E:\src\WebPresence\WebPresence.Data\WebPresenceEf.edmx'. 
+=======
+﻿// T4 code generation is enabled for model 'E:\src\WebPresence-CMS\WebPresence.Data\WebPresenceEf.edmx'. 
+>>>>>>> Inital commit
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

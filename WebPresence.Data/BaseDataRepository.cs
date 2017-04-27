@@ -39,6 +39,26 @@ namespace WebPresence.Data
             }
         }
 
+        public long Count()
+        {
+            using (var context = new WebPresenceEntities())
+            {
+                IQueryable<T> dbQuery = context.Set<T>();
+
+                return dbQuery.LongCount();
+            }
+        }
+
+        public long Count(Expression<Func<T, bool>> whereCondition)
+        {
+            using (var context = new WebPresenceEntities())
+            {
+                IQueryable<T> dbQuery = context.Set<T>().Where(whereCondition);
+
+                return dbQuery.LongCount();
+            }
+        }
+
         public virtual IList<T> GetAll(params Expression<Func<T, object>>[] navigationProperties)
         {
             List<T> list;
@@ -64,6 +84,31 @@ namespace WebPresence.Data
             {
                 LogManager.Instance.Log(string.Format(DataMesages.DataError, ex.Message, typeof(T).FullName), ex, LoggingLevel.Error);
                 
+                return null;
+            }
+        }
+
+        public IList<T> GetAll(Expression<Func<T, bool>> whereCondition)
+        {
+            List<T> list;
+
+            try
+            {
+                using (var context = new WebPresenceEntities())
+                {
+                    IQueryable<T> dbQuery = context.Set<T>().Where(whereCondition);
+                    
+                    list = dbQuery
+                        .AsNoTracking()
+                        .ToList();
+                }
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+                LogManager.Instance.Log(string.Format(DataMesages.DataError, ex.Message, typeof(T).FullName), ex, LoggingLevel.Error);
+
                 return null;
             }
         }
@@ -113,6 +158,31 @@ namespace WebPresence.Data
                     item = dbQuery
                         .AsNoTracking() //Don't track any changes for the selected item
                         .FirstOrDefault(where); //Apply where clause                    
+                }
+
+                return item;
+            }
+            catch (Exception ex)
+            {
+                LogManager.Instance.Log(string.Format(DataMesages.DataError, ex.Message, typeof(T).FullName), ex, LoggingLevel.Error);
+
+                return null;
+            }
+        }
+
+        public T GetSingleQuery(Expression<Func<T, bool>> whereCondition)
+        {
+            T item = null;
+
+            try
+            {
+                using (var context = new WebPresenceEntities())
+                {
+                    IQueryable<T> dbQuery = context.Set<T>();                    
+
+                    item = dbQuery
+                        .AsNoTracking() //Don't track any changes for the selected item
+                        .FirstOrDefault(whereCondition); //Apply where clause                    
                 }
 
                 return item;

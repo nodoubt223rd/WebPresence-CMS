@@ -9,10 +9,6 @@
         <EntityTypeShape EntityType="WebPresenceModel.Item" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="WebPresenceModel.PhotoBook" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="WebPresenceModel.Type" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <AssociationConnector Association="WebPresenceModel.FK__PhotoBook__BookC__1920BF5C" ManuallyRouted="false" />
-        <AssociationConnector Association="WebPresenceModel.FK__PhotoBook__ItemI__173876EA" ManuallyRouted="false" />
-        <AssociationConnector Association="WebPresenceModel.FK_Item_Type" ManuallyRouted="false" />
-        <AssociationConnector Association="WebPresenceModel.FK__PhotoBook__BookT__182C9B23" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

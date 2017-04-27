@@ -1,6 +1,7 @@
 ﻿
 namespace WebPresence.Common
 {
+<<<<<<< HEAD
     public struct Constants
     {
 		public static readonly char CommaSeparator = ',';
@@ -23,5 +24,10 @@ namespace WebPresence.Common
 			public static readonly string cWebPresencePresentation = "WP Presentation Lib";
 			public static readonly string cWebPresenceService = "WP Presentation Layer";
 		}
+=======
+    public static class Constants
+    {
+        public const string cComicServiceName = "WP Cms Service";
+>>>>>>> Inital commit
     }
 }

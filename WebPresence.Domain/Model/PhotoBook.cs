@@ -22,9 +22,5 @@ namespace WebPresence.Domain.Model
         public string DisplayName { get; set; }
         public Nullable<bool> IsPublished { get; set; }
         public Nullable<bool> IsCacheable { get; set; }
-    
-        public virtual Category Category { get; set; }
-        public virtual Item Item { get; set; }
-        public virtual Type Type { get; set; }
     }
 }

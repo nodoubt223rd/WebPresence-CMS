@@ -13,12 +13,5 @@ namespace WebPresence.Presentation.ViewModels.ContentMenu
         public int NodeId { get; set; }
         public string Description { get; set; }
         public List<ChildNode> ChildNodes { get; set; }
-
-		public bool IsContentNode { get; set; }
-
-		public bool HasChildren()
-		{
-			return ChildNodes.Count > 0 ? true : false; 
-		}
     }
 }

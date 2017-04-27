@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace WebPresence.Presentation.ViewModels.ContentMenu
 {
@@ -16,6 +17,6 @@ namespace WebPresence.Presentation.ViewModels.ContentMenu
         public string Url { get; set; }
         public bool Disable { get; set; }
         public bool HasAccess { get; set; }
-        public ParentNode ParentMenu { get; set; }
+        public List<ChildNode> Siblings { get; set; }
     }
 }

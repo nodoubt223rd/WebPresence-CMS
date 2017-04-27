@@ -16,10 +16,5 @@ namespace WebPresence.Controllers
         {
             return View();
         }
-
-		public ActionResult ContentMenu()
-		{
-			return View();
-		}
     }
 }

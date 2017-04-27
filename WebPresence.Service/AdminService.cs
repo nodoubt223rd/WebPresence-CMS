@@ -4,17 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using WebPresence.Common.Caching;
+using WebPresence.Common.Caching.Interfaces;
 using WebPresence.Data;
 using WebPresence.Data.Interfaces;
 using WebPresence.Domain.Model;
-using WebPresence.Service.Interfaces;
 using WebPresence.Presentation.ViewModels.ContentMenu;
+using WebPresence.Service.DataHelpers.Menus;
+using WebPresence.Service.Interfaces;
 
 namespace WebPresence.Service
 {
     public class AdminService : IAdminService
     {
         private readonly IBaseDataRepository<Item> _itemRepository;
+        private readonly HttpCache _caching = new HttpCache();
 
         public AdminService()
         {

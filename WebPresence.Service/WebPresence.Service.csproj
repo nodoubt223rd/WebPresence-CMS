@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +54,7 @@
   <ItemGroup>
     <Compile Include="AdminService.cs" />
     <Compile Include="AdminStartUp.cs" />
+    <Compile Include="DataHelpers\Menus\ChildMenuHelper.cs" />
     <Compile Include="DataHelpers\ProjectionExpression.cs" />
     <Compile Include="DataHelpers\QueryableExtensions.cs" />
     <Compile Include="Interfaces\IAdminService.cs" />

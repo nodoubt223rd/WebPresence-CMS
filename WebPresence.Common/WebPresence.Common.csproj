@@ -131,6 +131,7 @@
   <ItemGroup>
     <Compile Include="AppDomain\AppDomain.cs" />
     <Compile Include="Caching\CacheProviders.cs" />
+    <Compile Include="Caching\CachingRegions.cs" />
     <Compile Include="Caching\HttpCache.cs" />
     <Compile Include="Caching\Interfaces\ICacheProvider.cs" />
     <Compile Include="Collections\Algorithm.cs" />
@@ -188,7 +189,12 @@
     <Compile Include="XmlElementUtils.cs" />
     <Compile Include="Xml\XmlElementExtensions.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AnnotationResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AnnotationResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

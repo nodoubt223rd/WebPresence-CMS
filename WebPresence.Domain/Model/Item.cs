@@ -14,12 +14,6 @@ namespace WebPresence.Domain.Model
     
     public partial class Item
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Item()
-        {
-            this.PhotoBooks = new HashSet<PhotoBook>();
-        }
-    
         public int Id { get; set; }
         public Nullable<int> ParentItemId { get; set; }
         public int ItemTypeId { get; set; }
@@ -28,9 +22,6 @@ namespace WebPresence.Domain.Model
         public System.DateTime Created { get; set; }
         public string ContentOwner { get; set; }
         public bool IsParentItem { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PhotoBook> PhotoBooks { get; set; }
-        public virtual Type Type { get; set; }
+        public bool IsChild { get; set; }    
     }
 }

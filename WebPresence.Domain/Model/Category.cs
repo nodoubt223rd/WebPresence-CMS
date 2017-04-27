@@ -13,18 +13,9 @@ namespace WebPresence.Domain.Model
     using System.Collections.Generic;
     
     public partial class Category
-    {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Category()
-        {
-            this.PhotoBooks = new HashSet<PhotoBook>();
-        }
-    
+    {    
         public int Id { get; set; }
         public string ItemName { get; set; }
         public string DisplayName { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PhotoBook> PhotoBooks { get; set; }
     }
 }
