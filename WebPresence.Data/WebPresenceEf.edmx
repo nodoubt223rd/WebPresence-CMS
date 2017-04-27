@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WebPresenceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="400" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IsParentItem" Type="bit" Nullable="false" />
+          <Property Name="ParentItemId" Type="int" />
+          <Property Name="ItemTypeId" Type="int" Nullable="false" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="400" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="ContentOwner" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PhotoBook">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemId" Type="int" />
+          <Property Name="BookTypeId" Type="int" />
+          <Property Name="BookCategoryId" Type="int" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="400" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="IsCacheable" Type="bit" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="400" />
+        </EntityType>
+        <Association Name="FK__PhotoBook__BookC__1920BF5C">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="PhotoBook" Type="Self.PhotoBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PhotoBook">
+              <PropertyRef Name="BookCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhotoBook__BookT__182C9B23">
+          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+          <End Role="PhotoBook" Type="Self.PhotoBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PhotoBook">
+              <PropertyRef Name="BookTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhotoBook__ItemI__173876EA">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="PhotoBook" Type="Self.PhotoBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PhotoBook">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ItemTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WebPresenceModelStoreContainer">
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhotoBook" EntityType="Self.PhotoBook" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__PhotoBook__BookC__1920BF5C" Association="Self.FK__PhotoBook__BookC__1920BF5C">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="PhotoBook" EntitySet="PhotoBook" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhotoBook__BookT__182C9B23" Association="Self.FK__PhotoBook__BookT__182C9B23">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="PhotoBook" EntitySet="PhotoBook" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhotoBook__ItemI__173876EA" Association="Self.FK__PhotoBook__ItemI__173876EA">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="PhotoBook" EntitySet="PhotoBook" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Type" Association="Self.FK_Item_Type">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebPresenceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PhotoBooks" Relationship="Self.FK__PhotoBook__BookC__1920BF5C" FromRole="Category" ToRole="PhotoBook" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentItemId" Type="Int32" />
+          <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ItemName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ContentOwner" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PhotoBooks" Relationship="Self.FK__PhotoBook__ItemI__173876EA" FromRole="Item" ToRole="PhotoBook" />
+          <NavigationProperty Name="Type" Relationship="Self.FK_Item_Type" FromRole="Item" ToRole="Type" />
+          <Property Name="IsParentItem" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PhotoBook">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="Int32" />
+          <Property Name="BookTypeId" Type="Int32" />
+          <Property Name="BookCategoryId" Type="Int32" />
+          <Property Name="ItemName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="IsCacheable" Type="Boolean" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__PhotoBook__BookC__1920BF5C" FromRole="PhotoBook" ToRole="Category" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__PhotoBook__ItemI__173876EA" FromRole="PhotoBook" ToRole="Item" />
+          <NavigationProperty Name="Type" Relationship="Self.FK__PhotoBook__BookT__182C9B23" FromRole="PhotoBook" ToRole="Type" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Items" Relationship="Self.FK_Item_Type" FromRole="Type" ToRole="Item" />
+          <NavigationProperty Name="PhotoBooks" Relationship="Self.FK__PhotoBook__BookT__182C9B23" FromRole="Type" ToRole="PhotoBook" />
+        </EntityType>
+        <Association Name="FK__PhotoBook__BookC__1920BF5C">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="PhotoBook" Type="Self.PhotoBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PhotoBook">
+              <PropertyRef Name="BookCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhotoBook__ItemI__173876EA">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="PhotoBook" Type="Self.PhotoBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PhotoBook">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ItemTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhotoBook__BookT__182C9B23">
+          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+          <End Role="PhotoBook" Type="Self.PhotoBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PhotoBook">
+              <PropertyRef Name="BookTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WebPresenceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Items" EntityType="Self.Item" />
+          <EntitySet Name="PhotoBooks" EntityType="Self.PhotoBook" />
+          <EntitySet Name="Types" EntityType="Self.Type" />
+          <AssociationSet Name="FK__PhotoBook__BookC__1920BF5C" Association="Self.FK__PhotoBook__BookC__1920BF5C">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="PhotoBook" EntitySet="PhotoBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhotoBook__ItemI__173876EA" Association="Self.FK__PhotoBook__ItemI__173876EA">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="PhotoBook" EntitySet="PhotoBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Type" Association="Self.FK_Item_Type">
+            <End Role="Type" EntitySet="Types" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhotoBook__BookT__182C9B23" Association="Self.FK__PhotoBook__BookT__182C9B23">
+            <End Role="Type" EntitySet="Types" />
+            <End Role="PhotoBook" EntitySet="PhotoBooks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebPresenceModelStoreContainer" CdmEntityContainer="WebPresenceEntities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="WebPresenceModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="WebPresenceModel.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="IsParentItem" ColumnName="IsParentItem" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParentItemId" ColumnName="ParentItemId" />
+                <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="ContentOwner" ColumnName="ContentOwner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhotoBooks">
+            <EntityTypeMapping TypeName="WebPresenceModel.PhotoBook">
+              <MappingFragment StoreEntitySet="PhotoBook">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="BookTypeId" ColumnName="BookTypeId" />
+                <ScalarProperty Name="BookCategoryId" ColumnName="BookCategoryId" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="IsCacheable" ColumnName="IsCacheable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Types">
+            <EntityTypeMapping TypeName="WebPresenceModel.Type">
+              <MappingFragment StoreEntitySet="Type">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

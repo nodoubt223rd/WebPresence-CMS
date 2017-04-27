@@ -1,0 +1,35 @@
+﻿@model WebPresence.Presentation.ViewModels.ContentMenu.ContentTree
+
+@{
+    Layout = "~/Areas/Dashboard/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @if(Model != null)
+    {
+        <ul>
+            @foreach (var parent in Model.ContentTreeNodes)
+            {
+                <li>
+                    @Html.Raw(parent.NodeName)
+                    @if (parent.ChildNodes != null)
+                    {
+                        if (parent.ChildNodes.Count > 0)
+                        {
+                            <ul>
+                                @foreach(var child in parent.ChildNodes)
+                                {
+                                    <li>@Html.Raw(child.DisplayName)</li>
+                                }
+                            </ul>
+                        }
+                    }                    
+                </li>
+                
+            }
+        </ul>
+    }
+</p>
