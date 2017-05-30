@@ -117,34 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="IndexersNotAllowed" xml:space="preserve">
-    <value>Indexers not allowed in field specification expression</value>
+  <data name="EnumerableCopyError" xml:space="preserve">
+    <value>Error in the copy of enumerables</value>
   </data>
-  <data name="InvalidDateFormat" xml:space="preserve">
-    <value>Range Limits of DateRangeAttribute have invalid format</value>
+  <data name="FilterParameterName" xml:space="preserve">
+    <value>All filters must have the same parameter</value>
   </data>
-  <data name="InvalidDateRangeApplication" xml:space="preserve">
-    <value>The DateRangeAtrribute can be applied only to DateTime or Nullable&lt;DateTime&gt; properties</value>
+  <data name="FilterParameterNumber" xml:space="preserve">
+    <value>Filter must have 1 parameter</value>
   </data>
-  <data name="InvalidDynamicRangeApplication" xml:space="preserve">
-    <value>The DynamicRangeAttribute has been applied to an unsopported type</value>
+  <data name="NoAddInEnumerable" xml:space="preserve">
+    <value>No Add(T) or AddLast(T) method in enumerable</value>
   </data>
-  <data name="InvalidFormat" xml:space="preserve">
-    <value>Range Limits of DynamicRangeAttribute have invalid format</value>
+  <data name="NoConstructor" xml:space="preserve">
+    <value>Enumerable of type {0} has neither () not (int) constructor</value>
   </data>
-  <data name="InvalidLowerDynamicDelay" xml:space="preserve">
-    <value>The dynamic minimum delay is invalid</value>
+  <data name="NoConstructorZero" xml:space="preserve">
+    <value>Type {0} has no 0 arguments constructor</value>
   </data>
-  <data name="InvalidLowerDynamicRange" xml:space="preserve">
-    <value>The dynamic minimum is invalid</value>
+  <data name="NotIstantiatedType" xml:space="preserve">
+    <value>The ViewModel of the template cannot be a generic type</value>
   </data>
-  <data name="InvalidUpperDynamicDelay" xml:space="preserve">
-    <value>The dynamic maximum delay is invalid</value>
+  <data name="NotSupportedEnumerable" xml:space="preserve">
+    <value>Enumerables of type {0} are not supported</value>
   </data>
-  <data name="InvalidUpperDynamicRange" xml:space="preserve">
-    <value>The dynamic maximum is invalid</value>
+  <data name="NotSupportedEnumerables" xml:space="preserve">
+    <value>Enumerables are non supported by {0}</value>
   </data>
-  <data name="StandardError" xml:space="preserve">
-    <value>{0} is not in the required range</value>
+  <data name="NotSupportedInterface" xml:space="preserve">
+    <value>Interfaces are not supported by {0}</value>
+  </data>
+  <data name="PropertyNotFound" xml:space="preserve">
+    <value>Type {0} has no property named {1}</value>
+  </data>
+  <data name="templateNotValid" xml:space="preserve">
+    <value>Templates must be either partial views names or Func&lt;HtmlHelper&lt;T&gt;, HelperResult&gt;,  or Func&lt;HtmlHelper&lt;T&gt;, string&gt;</value>
+  </data>
+  <data name="TypeSafeTemplateNotValid" xml:space="preserve">
+    <value>Only a  Func&lt;HtmlHelper&lt;T&gt;, HelperResult&gt;,  or Func&lt;HtmlHelper&lt;T&gt;, string&gt; template is accepted</value>
+  </data>
+  <data name="PropertyNameTypeError" xml:space="preserve">
+    <value>Property Name: {0} cannot be of Type: {1}.</value>
   </data>
 </root>

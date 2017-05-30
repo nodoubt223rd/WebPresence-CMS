@@ -22,7 +22,7 @@ namespace WebPresence.Common.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class AnnotationResources {
+    public class AnnotationResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace WebPresence.Common.Resources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WebPresence.Common.Resources.AnnotationResources", typeof(AnnotationResources).Assembly);
@@ -51,7 +51,7 @@ namespace WebPresence.Common.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,9 +61,18 @@ namespace WebPresence.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Indexers not allowed in field specification expression.
+        /// </summary>
+        public static string IndexersNotAllowed {
+            get {
+                return ResourceManager.GetString("IndexersNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Range Limits of DateRangeAttribute have invalid format.
         /// </summary>
-        internal static string InvalidDateFormat {
+        public static string InvalidDateFormat {
             get {
                 return ResourceManager.GetString("InvalidDateFormat", resourceCulture);
             }
@@ -72,7 +81,7 @@ namespace WebPresence.Common.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The DateRangeAtrribute can be applied only to DateTime or Nullable&lt;DateTime&gt; properties.
         /// </summary>
-        internal static string InvalidDateRangeApplication {
+        public static string InvalidDateRangeApplication {
             get {
                 return ResourceManager.GetString("InvalidDateRangeApplication", resourceCulture);
             }
@@ -81,7 +90,7 @@ namespace WebPresence.Common.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The DynamicRangeAttribute has been applied to an unsopported type.
         /// </summary>
-        internal static string InvalidDynamicRangeApplication {
+        public static string InvalidDynamicRangeApplication {
             get {
                 return ResourceManager.GetString("InvalidDynamicRangeApplication", resourceCulture);
             }
@@ -90,7 +99,7 @@ namespace WebPresence.Common.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Range Limits of DynamicRangeAttribute have invalid format.
         /// </summary>
-        internal static string InvalidFormat {
+        public static string InvalidFormat {
             get {
                 return ResourceManager.GetString("InvalidFormat", resourceCulture);
             }
@@ -99,7 +108,7 @@ namespace WebPresence.Common.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The dynamic minimum delay is invalid.
         /// </summary>
-        internal static string InvalidLowerDynamicDelay {
+        public static string InvalidLowerDynamicDelay {
             get {
                 return ResourceManager.GetString("InvalidLowerDynamicDelay", resourceCulture);
             }
@@ -108,7 +117,7 @@ namespace WebPresence.Common.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The dynamic minimum is invalid.
         /// </summary>
-        internal static string InvalidLowerDynamicRange {
+        public static string InvalidLowerDynamicRange {
             get {
                 return ResourceManager.GetString("InvalidLowerDynamicRange", resourceCulture);
             }
@@ -117,7 +126,7 @@ namespace WebPresence.Common.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The dynamic maximum delay is invalid.
         /// </summary>
-        internal static string InvalidUpperDynamicDelay {
+        public static string InvalidUpperDynamicDelay {
             get {
                 return ResourceManager.GetString("InvalidUpperDynamicDelay", resourceCulture);
             }
@@ -126,7 +135,7 @@ namespace WebPresence.Common.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The dynamic maximum is invalid.
         /// </summary>
-        internal static string InvalidUpperDynamicRange {
+        public static string InvalidUpperDynamicRange {
             get {
                 return ResourceManager.GetString("InvalidUpperDynamicRange", resourceCulture);
             }
@@ -135,7 +144,7 @@ namespace WebPresence.Common.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} is not in the required range.
         /// </summary>
-        internal static string StandardError {
+        public static string StandardError {
             get {
                 return ResourceManager.GetString("StandardError", resourceCulture);
             }

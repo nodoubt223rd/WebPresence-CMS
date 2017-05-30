@@ -151,6 +151,11 @@
     <Compile Include="Config\RegistryConfig.cs" />
     <Compile Include="Config\RegistryHelper.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Enumerators\DaysOfTheWeek.cs" />
+    <Compile Include="Enumerators\FilterCondition.cs" />
+    <Compile Include="Enumerators\FilterOperator.cs" />
+    <Compile Include="Enumerators\OrderType.cs" />
+    <Compile Include="Enumerators\ValidationType.cs" />
     <Compile Include="Handlers\NullHandler.cs" />
     <Compile Include="LangUtils\RunOnce.cs" />
     <Compile Include="Logging\EventLogHelper.cs" />
@@ -164,6 +169,16 @@
     <Compile Include="Logging\RequestLoggingHelper.cs" />
     <Compile Include="Patterns\Singleton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\AnnotationResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnnotationResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\CoreResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Security\ClientStateLocking.cs" />
     <Compile Include="Security\Encryption.cs" />
     <Compile Include="Security\LockedObjectWrapper.cs" />
@@ -191,8 +206,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AnnotationResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AnnotationResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\CoreResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CoreResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
