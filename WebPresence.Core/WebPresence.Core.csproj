@@ -72,7 +72,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\Menu\ActionMenuItem.cs" />
+    <Compile Include="Controls\Menus\ActionMenuItem.cs" />
+    <Compile Include="Controls\Menus\Navigational\WpControls.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\Html\HtmlHelperExtension.cs" />
@@ -82,6 +83,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WebPresence.Common\WebPresence.Common.csproj">
+      <Project>{9dda3e00-ed9e-4435-93f9-5c8e9a0f7e2a}</Project>
+      <Name>WebPresence.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebPresence.Presentation\WebPresence.Presentation.csproj">
       <Project>{b812589a-40a5-42ab-b9c6-36fb08f33073}</Project>
       <Name>WebPresence.Presentation</Name>
