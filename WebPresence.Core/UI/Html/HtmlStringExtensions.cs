@@ -12,7 +12,7 @@ namespace WebPresence.Core.UI.Html
             return string.IsNullOrEmpty(value) ? "" : string.Format(" {0}=\"{1}}\"", attributeName, value);
         }
 
-        public static string AsCalssAttribute(this string value)
+        public static string AsClassAttribute(this string value)
         {
             return value.AsAttribute("class");
         }

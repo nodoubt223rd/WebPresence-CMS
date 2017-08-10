@@ -280,7 +280,7 @@ WebPresence.Service/obj
 # WebPresence project user file
 WebPresence/WebPresence.csproj.user
 WebPresence.Common/WebPresence.Common.csproj.user
-WebPresence.Core/WebPresence.Core.csproj
+WebPresence.Core/WebPresence.Core.csproj.user
 WebPresence.Data/WebPresence.Data.csproj.user
 WebPresence.Domain/WebPresence.Domain.csproj.user
 WebPresence.Presentation/WebPresence.Presentation.csproj.user
