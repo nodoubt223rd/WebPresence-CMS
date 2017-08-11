@@ -264,6 +264,7 @@ __pycache__/
 # WebPresence Bin and Obj Folders
 WebPresence/bin
 WebPresence/obj
+WebPresence/Data
 WebPresence.Common/bin
 WebPresence.Common/obj
 WebPresence.Core/bin

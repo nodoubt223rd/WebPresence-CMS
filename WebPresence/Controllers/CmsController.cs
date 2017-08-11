@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using WebPresence.Service;
+using WebPresence.Service.Interfaces;
+
 namespace WebPresence.Controllers
 {
     public class CmsController : Controller
@@ -13,5 +16,10 @@ namespace WebPresence.Controllers
         {
             return View();
         }
+
+		public ActionResult ContentMenu()
+		{
+			return View();
+		}
     }
 }

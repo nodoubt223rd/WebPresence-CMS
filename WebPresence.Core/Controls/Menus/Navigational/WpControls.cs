@@ -18,7 +18,7 @@ namespace WebPresence.Core.Controls.Menus.Navigational
 			sb.Append($"<ol class=\"{Constants.AdminCssClasses.cContentTreeClass}\">");
 
 			foreach (var item in contentItems.ContentTreeNodes)
-			{
+			{			
 				sb.Append($"<li class=\"{Constants.AdminCssClasses.cFolderItemClass}\">{item.NodeName}");
 
 				if (item.HasChildren())
@@ -26,7 +26,8 @@ namespace WebPresence.Core.Controls.Menus.Navigational
 					sb.Append("<ol>");
 					foreach (var childItem in item.ChildNodes)
 					{
-						sb.Append($"<li class=\"{Constants.AdminCssClasses.cDefaultFileClass}\"</li>");
+						sb.Append($"<li class=\"{Constants.AdminCssClasses.cDefaultFileClass}\">{childItem.DisplayName}</li>");
+						
 					}
 					sb.Append("</ol></li>");
 				}

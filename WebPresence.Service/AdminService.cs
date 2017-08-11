@@ -39,9 +39,12 @@ namespace WebPresence.Service
 
             foreach (Item contentItem in contentItems)
             {
+				
                 if (contentItem.IsParentItem)
                 {
                     parentNode = new ParentNode();
+
+					parentNode.IsContentNode = contentItem.ParentItemId.HasValue ? false : true;
 
                     parentNode.NodeName = contentItem.DisplayName;
                     parentNode.NodeId = contentItem.Id;
