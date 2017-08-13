@@ -262,6 +262,8 @@ __pycache__/
 *.pyc
 
 # WebPresence Bin and Obj Folders
+Data/
+Data/Logs/
 WebPresence/bin
 WebPresence/obj
 WebPresence/Data
