@@ -67,7 +67,7 @@ namespace WebPresence
             ));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-2.2.4.js"
+                        "~/Scripts/jquery-3.1.1.js"
             ));
 
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
