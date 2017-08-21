@@ -1,4 +1,7 @@
-﻿<!-- START Sidebar (left) -->
+﻿@model WebPresence.Presentation.ViewModels.ContentMenu.ContentTree
+@using WebPresence.Core.Controls.Menus.Navigational
+
+<!-- START Sidebar (left) -->
 <div class="aside-inner">
     <!-- START sidebar nav -->
     <nav class="sidebar">
@@ -24,6 +27,7 @@
             </li>
             <!-- END user info-->
             <!-- Iterates over all sidebar items-->
+			@WpControls.ContentTreeView(Model);
         </ul>
     </nav>
 </div>

@@ -14,6 +14,11 @@ namespace WebPresence.Common
 			public static readonly string cDefaultFileClass = "file";
 		}
 
+		public struct CacheRegions
+		{
+			public static readonly string cContentTree = "CONTENT_TREE";
+		}
+
 		public struct ServiceNames
 		{
 			public static readonly string cWebCmsService = "WP Cms Service";

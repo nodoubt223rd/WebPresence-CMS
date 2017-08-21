@@ -15,8 +15,10 @@ namespace WebPresence.Core.Controls.Menus.Navigational
 		public static MvcHtmlString ContentTreeView(ContentTree contentItems)
 		{
 			StringBuilder sb = new StringBuilder();
+			
 			sb.Append($"<ol class=\"{Constants.AdminCssClasses.cContentTreeClass}\">");
-
+			sb.Append($"<li class=\"{Constants.AdminCssClasses.cDefaultFileClass}\">{contentItems.ContentNode.NodeName}");
+			sb.Append("<ol>");
 			foreach (var item in contentItems.ContentTreeNodes)
 			{			
 				sb.Append($"<li class=\"{Constants.AdminCssClasses.cFolderItemClass}\">{item.NodeName}");
@@ -34,7 +36,8 @@ namespace WebPresence.Core.Controls.Menus.Navigational
 				else
 					sb.Append("</li>");
 			}
-
+			sb.Append("</ol>");
+			sb.Append("</li>");
 			sb.Append("</ol>");
 
 			return MvcHtmlString.Create(sb.ToString()); 

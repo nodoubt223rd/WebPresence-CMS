@@ -18,8 +18,8 @@ namespace WebPresence.Areas.Dashboard.Controllers
 
         // GET: Dashboard/CPPanel
         public ActionResult Index()
-        {
-            return View();
+        {			
+            return View(adminService.GetContentTree());
         }        
     }
 }

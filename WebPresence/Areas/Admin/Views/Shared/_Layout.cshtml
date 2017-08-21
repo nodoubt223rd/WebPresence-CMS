@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model WebPresence.Presentation.ViewModels.ContentMenu.ContentTree
+<!DOCTYPE html>
 <html lang="en-us">
 <head>
     <meta charset="utf-8" />
@@ -26,7 +27,7 @@
         </header>
         <!-- sidebar -->
         <aside class="aside">
-            @Html.Partial("_Sidebar")
+            @Html.Partial("_Sidebar", Model)
         </aside>
         <!-- Main Section -->
         <section>

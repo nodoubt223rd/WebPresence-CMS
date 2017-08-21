@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using WebPresence.Common;
 using WebPresence.Common.Caching;
 using WebPresence.Common.Caching.Interfaces;
 using WebPresence.Data;
@@ -32,60 +33,76 @@ namespace WebPresence.Service
 
             ContentTree contentTree = new ContentTree();
 
-            List<Item> contentItems = _itemRepository.GetAll().ToList();
+			if (_caching.Get(Constants.CacheRegions.cContentTree, out contentTree))
+			{
+				return contentTree;
+			}
+			else
+			{
+				List<Item> contentItems = _itemRepository.GetAll().ToList();
 
-            if (contentItems == null)
-                return null;
+				if (contentItems == null)
+					return null;
 
-            ParentNode parentNode = null;
+				ParentNode parentNode = null;
 
-            contentTree.ContentTreeNodes = new List<ParentNode>();            
+				contentTree = new ContentTree();
+				contentTree.ContentTreeNodes = new List<ParentNode>();
 
-            foreach (Item contentItem in contentItems)
-            {
-				
-                if (contentItem.IsParentItem)
-                {
-                    parentNode = new ParentNode();
+				foreach (Item contentItem in contentItems)
+				{
 
-					parentNode.IsContentNode = contentItem.ParentItemId.HasValue ? false : true;
+					if (contentItem.IsParentItem)
+					{
+						parentNode = new ParentNode();
 
-                    parentNode.NodeName = contentItem.DisplayName;
-                    parentNode.NodeId = contentItem.Id;
-                    parentNode.ChildNodes = new List<ChildNode>();
-                }
+						parentNode.IsContentNode = contentItem.ParentItemId.HasValue ? false : true;
 
-                if (contentItem.IsParentItem)
-                {
-                    foreach (Item childNode in contentItems)
-                    {
-                        if (parentNode != null)
-                        {
-                            if (childNode.ParentItemId.HasValue )
-                            {
-                                if (childNode.ParentItemId.Value == parentNode.NodeId)
-                                {
-                                    ChildNode node = new ChildNode();
+						parentNode.NodeName = contentItem.DisplayName;
+						parentNode.NodeId = contentItem.Id;
+						parentNode.ChildNodes = new List<ChildNode>();
+					}
 
-                                    node.Id = childNode.Id;
-                                    node.ParentItemId = childNode.ParentItemId.Value;
-                                    node.ItemTypeId = childNode.ItemTypeId;
-                                    node.ItemName = childNode.ItemName;
-                                    node.DisplayName = childNode.DisplayName;
-                                    node.Created = childNode.Created;
-                                    node.ContentOwner = childNode.ContentOwner;
+					if (parentNode.IsContentNode)
+					{
+						contentTree.ContentNode = new ParentNode();
 
-                                    parentNode.ChildNodes.Add(node);
-                                }
-                            }
-                        }
-                    }
+						contentTree.ContentNode = parentNode;
+					}
 
-                    contentTree.ContentTreeNodes.Add(parentNode);
-                }
-            }
+					if (contentItem.IsParentItem && contentItem.ParentItemId.HasValue)
+					{
+						foreach (Item childNode in contentItems)
+						{
+							if (parentNode != null)
+							{
+								if (childNode.ParentItemId.HasValue)
+								{
+									if (childNode.ParentItemId.Value == parentNode.NodeId)
+									{
+										ChildNode node = new ChildNode();
 
-            return contentTree;
+										node.Id = childNode.Id;
+										node.ParentItemId = childNode.ParentItemId.Value;
+										node.ItemTypeId = childNode.ItemTypeId;
+										node.ItemName = childNode.ItemName;
+										node.DisplayName = childNode.DisplayName;
+										node.Created = childNode.Created;
+										node.ContentOwner = childNode.ContentOwner;
+
+										parentNode.ChildNodes.Add(node);
+									}
+								}
+							}
+						}
+						contentTree.ContentTreeNodes.Add(parentNode);
+					}
+				}
+
+				_caching.Set(Constants.CacheRegions.cContentTree, contentTree, 30);
+
+				return contentTree;
+			}
         }
     }
 }
