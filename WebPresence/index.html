@@ -1,86 +1,123 @@
-﻿<!DOCTYPE html>
-<html data-ng-app="app">
+<html lang="en-GB">
+
 <head>
-    <style>
-        /* This helps the ng-show/ng-hide animations start at the right place. */
-        /* Since Angular has this but needs to load, this gives us the class early. */
-        .ng-hide {
-            display: none!important;
-        }
-    </style>
-    <title data-ng-bind="title">Hot Towel Angular</title>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<meta name="author" content="The CSS Ninja">
+	<meta name="keywords" content="CSS, Tree menu, checked pseudo-class, CSS Ninja">
+	<meta name="description" content="Create a pure CSS tree folder structure with collapsible folders utilising checkboxes along with the checked pseudo-class">
+	<meta name="robots" content="all">
+	<meta name="copyright" content="The CSS Ninja">
+	
+	<!--[if gte IE 9 ]><link rel="stylesheet" type="text/css" href="_styles.css" media="screen"><![endif]-->
+	<!--[if !IE]>--><link rel="stylesheet" type="text/css" href="_styles.css" media="screen"><!--<![endif]-->
+	
+	<title>Pure CSS collapsible tree menu | The CSS Ninja</title>
 
-    <script>
-        // Must be first. IE10 mobile viewport fix
-        if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
-            var msViewportStyle = document.createElement("style");
-            var mq = "@-ms-viewport{width:auto!important}";
-            msViewportStyle.appendChild(document.createTextNode(mq));
-            document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
-        }
-    </script>
-
-    <link href="content/ie10mobile.css" rel="stylesheet" />
-    <link href="content/bootstrap.min.css" rel="stylesheet" />
-    <link href="content/font-awesome.min.css" rel="stylesheet" />
-    <link href="content/toastr.css" rel="stylesheet" />
-    <link href="content/customtheme.css" rel="stylesheet">
-    <link href="content/styles.css" rel="stylesheet" />
 </head>
 <body>
-    <div>
-        <div data-ng-include="'/app/layout/shell.html'"></div>
-        <div id="splash-page" data-ng-show="false">
-            <div class="page-splash">
-                <div class="page-splash-message">
-                    Hot Towel Angular
-                </div>
-                <div class="progress progress-striped active page-progress-bar">
-                    <div class="bar"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <span data-cc-scroll-to-top></span>
-
-    <!-- Vendor Scripts -->
-    <script src="scripts/jquery-2.1.1.js"></script>
-    <script src="scripts/angular.js"></script>
-    <script src="scripts/angular-animate.js"></script>
-    <script src="scripts/angular-route.js"></script>
-    <script src="scripts/angular-sanitize.js"></script>
-    <script src="scripts/bootstrap.js"></script>
-    <script src="scripts/toastr.js"></script>
-    <script src="scripts/moment.js"></script>
-    <script src="scripts/ui-bootstrap-tpls-0.10.0.js"></script>
-    <script src="scripts/spin.js"></script>
-
-    <!-- Bootstrapping -->
-    <script src="app/app.js"></script>
-    <script src="app/config.js"></script>
-    <script src="app/config.exceptionHandler.js"></script>
-    <script src="app/config.route.js"></script>
-
-    <!-- common Modules -->
-    <script src="app/common/common.js"></script>
-    <script src="app/common/logger.js"></script>
-    <script src="app/common/spinner.js"></script>
-
-    <!-- common.bootstrap Modules -->
-    <script src="app/common/bootstrap/bootstrap.dialog.js"></script>
-
-    <!-- app -->
-    <script src="app/admin/admin.js"></script>
-    <script src="app/dashboard/dashboard.js"></script>
-    <script src="app/layout/shell.js"></script>
-    <script src="app/layout/sidebar.js"></script>
-
-    <!-- app Services -->
-    <script src="app/services/datacontext.js"></script>
-    <script src="app/services/directives.js"></script>
+	
+	<ol class="tree">
+		<li>
+			<label for="folder1">Folder 1</label> <input type="checkbox" checked disabled id="folder1" /> 
+			<ol>
+				<li class="file"><a href="document.html.pdf">File 1</a></li>
+				<li>
+					<label for="subfolder1">Subfolder 1</label> <input type="checkbox" id="subfolder1" /> 
+					<ol>
+						<li class="file"><a href="">Filey 1</a></li>
+						<li>
+							<label for="subsubfolder1">Subfolder 1</label> <input type="checkbox" id="subsubfolder1" /> 
+							<ol>
+								<li class="file"><a href="">File 1</a></li>
+								<li>
+									<label for="subsubfolder2">Subfolder 1</label> <input type="checkbox" id="subsubfolder2" /> 
+									<ol>
+										<li class="file"><a href="">Subfile 1</a></li>
+										<li class="file"><a href="">Subfile 2</a></li>
+										<li class="file"><a href="">Subfile 3</a></li>
+										<li class="file"><a href="">Subfile 4</a></li>
+										<li class="file"><a href="">Subfile 5</a></li>
+										<li class="file"><a href="">Subfile 6</a></li>
+									</ol>
+								</li>
+							</ol>
+						</li>
+						<li class="file"><a href="">File 3</a></li>
+						<li class="file"><a href="">File 4</a></li>
+						<li class="file"><a href="">File 5</a></li>
+						<li class="file"><a href="">File 6</a></li>
+					</ol>
+				</li>
+			</ol>
+		</li>
+		<li>
+			<label for="folder2">Folder 2</label> <input type="checkbox" id="folder2" /> 
+			<ol>
+				<li class="file"><a href="">File 1</a></li>
+				<li>
+					<label for="subfolder2">Subfolder 1</label> <input type="checkbox" id="subfolder2" /> 
+					<ol>
+						<li class="file"><a href="">Subfile 1</a></li>
+						<li class="file"><a href="">Subfile 2</a></li>
+						<li class="file"><a href="">Subfile 3</a></li>
+						<li class="file"><a href="">Subfile 4</a></li>
+						<li class="file"><a href="">Subfile 5</a></li>
+						<li class="file"><a href="">Subfile 6</a></li>
+					</ol>
+				</li>
+			</ol>
+		</li>
+		<li>
+			<label for="folder3">Folder 3</label> <input type="checkbox" id="folder3" /> 
+			<ol>
+				<li class="file"><a href="">File 1</a></li>
+				<li>
+					<label for="subfolder3">Subfolder 1</label> <input type="checkbox" id="subfolder3" /> 
+					<ol>
+						<li class="file"><a href="">Subfile 1</a></li>
+						<li class="file"><a href="">Subfile 2</a></li>
+						<li class="file"><a href="">Subfile 3</a></li>
+						<li class="file"><a href="">Subfile 4</a></li>
+						<li class="file"><a href="">Subfile 5</a></li>
+						<li class="file"><a href="">Subfile 6</a></li>
+					</ol>
+				</li>
+			</ol>
+		</li>
+		<li>
+			<label for="folder4">Folder 4</label> <input type="checkbox" id="folder4" /> 
+			<ol>
+				<li class="file"><a href="">File 1</a></li>
+				<li>
+					<label for="subfolder4">Subfolder 1</label> <input type="checkbox" id="subfolder4" /> 
+					<ol>
+						<li class="file"><a href="">Subfile 1</a></li>
+						<li class="file"><a href="">Subfile 2</a></li>
+						<li class="file"><a href="">Subfile 3</a></li>
+						<li class="file"><a href="">Subfile 4</a></li>
+						<li class="file"><a href="">Subfile 5</a></li>
+						<li class="file"><a href="">Subfile 6</a></li>
+					</ol>
+				</li>
+			</ol>
+		</li>
+		<li>
+			<label for="folder5">Folder 5</label> <input type="checkbox" id="folder5" /> 
+			<ol>
+				<li class="file"><a href="">File 1</a></li>
+				<li>
+					<label for="subfolder5">Subfolder 1</label> <input type="checkbox" id="subfolder5" /> 
+					<ol>
+						<li class="file"><a href="">Subfile 1</a></li>
+						<li class="file"><a href="">Subfile 2</a></li>
+						<li class="file"><a href="">Subfile 3</a></li>
+						<li class="file"><a href="">Subfile 4</a></li>
+						<li class="file"><a href="">Subfile 5</a></li>
+						<li class="file"><a href="">Subfile 6</a></li>
+					</ol>
+				</li>
+			</ol>
+		</li>
+	</ol>	
 </body>
 </html>
